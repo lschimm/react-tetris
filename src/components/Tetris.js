@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Functions
+import { createStage } from '../gameHelpers'
+
 // Components
 import Stage from './Stage'
 import Display from './Display'

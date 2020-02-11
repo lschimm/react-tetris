@@ -8,6 +8,9 @@ import StartButton from './StartButton'
 // Functions
 import { createStage } from '../gameHelpers'
 
+// Styles
+import { StyledTetrisWrapper, StyledTetris } from './styles/StyledTetris'
+
 
 const Tetris = () => {
     return (

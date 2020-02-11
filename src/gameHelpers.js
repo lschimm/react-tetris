@@ -3,7 +3,7 @@ export const STAGE_HEIGHT = 20
 
 // Function to create stage
 
-export const CreateStage = () => 
-    Array.from(Array(STAGE_HEIGHT), () => 
-    new Array(Stage_WIDTH).fill([0, 'clear']) 
-    )
+export const createStage = () =>
+  Array.from(Array(STAGE_HEIGHT), () =>
+    new Array(STAGE_WIDTH).fill([0, 'clear'])
+  )

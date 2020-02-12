@@ -5,15 +5,16 @@ import Stage from './Stage'
 import Display from './Display'
 import StartButton from './StartButton'
 
-// Functions
-import { createStage } from '../gameHelpers'
+// Custom Hooks
+import { usePlayer } from '../hooks/usePlayer'
+import { useStage } from '../hooks/useStage'
 
 // Styles
 import { StyledTetrisWrapper, StyledTetris } from './styles/StyledTetris'
 
 
 const Tetris = () => {
-    console.log(createStage())
+    //console.log(createStage())
     return (
         <StyledTetrisWrapper>
             <StyledTetris>

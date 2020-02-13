@@ -10,6 +10,9 @@ import StartButton from './StartButton'
 import { usePlayer } from '../hooks/usePlayer'
 import { useStage } from '../hooks/useStage'
 
+// Functions
+import { setStage } from '../gameHelpers'
+
 // Styles
 import { StyledTetrisWrapper, StyledTetris } from './styles/StyledTetris'
 
@@ -23,8 +26,29 @@ const Tetris = () => {
 
 
 
-
+    
     //console.log('re-rendering')
+    
+    const movePlayer = dir => {
+
+    }
+
+    const startGame = () => {
+
+    }
+
+    const drop = () => {
+
+    }
+
+    const dropPlayer = () => {
+
+    }
+
+    const move = () => {
+        
+    }
+
     return (
         <StyledTetrisWrapper>
             <StyledTetris>

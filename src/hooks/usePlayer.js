@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 // Functions
-import { randomTetromino } from '../tetrominos'
+import { TETROMINOS, randomTetromino } from '../tetrominos'
+import { STAGE_WIDTH } from '../gameHelpers'
 
 export const usePlayer = () => {
     const [player, setPlayer] = useState({
@@ -10,19 +11,25 @@ export const usePlayer = () => {
         collided: false,
     })
 
-    return [player]
+    
+    const updatePlayerPos = ({ x, y, collided }) => {
+        setPlayer(prev => ({
+            ...prev, 
+            pos: { x: (prev.pos.x += x), y: (prev.pos.y += y)},
+            collided,
+        }))
+    }
+    
+    const resetPlayer = useCallback(() => {
+        setPlayer({
+            pos: { x: STAGE_WIDTH / 2 - 2, y: 0}, // set it in the middle // and at the top
+            tetromino: randomTetromino().shape,
+            collided: false,
+        })
+    }, [])
+    
+    return [player, updatePlayerPos, resetPlayer]
 }
-
-const updatePlayerPos = ({ x, y, collided }) => {
-    setPlayer(prev => ({
-        ...prev, 
-        pos: { x: (prev.pos.x += x), y: (prev.pos.y += y)},
-        collided,
-
-    }))
-}
-
-
 // name custom hooks === 'use'_____ so react will know it's a custom hook
 
 

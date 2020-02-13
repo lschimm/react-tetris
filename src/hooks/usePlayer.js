@@ -13,6 +13,15 @@ export const usePlayer = () => {
     return [player]
 }
 
+const updatePlayerPos = ({ x, y, collided }) => {
+    setPlayer(prev => ({
+        ...prev, 
+        pos: { x: (prev.pos.x += x), y: (prev.pos.y += y)},
+        collided,
+
+    }))
+}
+
 
 // name custom hooks === 'use'_____ so react will know it's a custom hook
 

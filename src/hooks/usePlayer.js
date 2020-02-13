@@ -32,7 +32,6 @@ export const usePlayer = () => {
 }
 // name custom hooks === 'use'_____ so react will know it's a custom hook
 
-
 //const [player, setPlayer] = useState()
 // above is shorthand for vvv
 // const playerState = useState()

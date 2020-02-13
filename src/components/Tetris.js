@@ -7,7 +7,7 @@ import Display from './Display'
 import StartButton from './StartButton'
 
 // Custom Hooks
-import { usePlayer } from '../hooks/usePlayer'
+import { usePlayer, updatePlayerPos, resetPlayer } from '../hooks/usePlayer'
 import { useStage } from '../hooks/useStage'
 
 // Functions
@@ -30,23 +30,34 @@ const Tetris = () => {
     //console.log('re-rendering')
     
     const movePlayer = dir => {
-
+        // takes care of left and right movement
+        updatePlayerPos({ x: dir, y: 0 })
     }
 
     const startGame = () => {
-
+        // Reset everything
+        setStage(createStage())
+        resetPlayer()
     }
 
     const drop = () => {
-
+        updatePlayerPos({ x: 0, y: 1, collided: false})
     }
 
     const dropPlayer = () => {
-
+        drop()
     }
 
     const move = () => {
-
+        if (!gameOver){
+            if (keyCode === 37) { //i.e. moving left
+                movePlayer(-1) 
+            } else if (keyCode === 39) { //i.e. moving right
+                movePlayer(1)
+            } else if (keyCode === 40) { // i.e. moving down
+                dropPlayer()
+            }
+        }
     }
 
     return (
@@ -63,7 +74,7 @@ const Tetris = () => {
                         <Display text="Level" />
                     </div>
                         )}
-                    <StartButton />
+                    <StartButton onClick={startGame} />
                 </aside>
             </StyledTetris>
         </StyledTetrisWrapper>

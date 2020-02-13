@@ -19,23 +19,23 @@ import { StyledTetrisWrapper, StyledTetris } from './styles/StyledTetris'
 
 
 const Tetris = () => {
-    const [dropTime, setDropTime] = useState(null);
-    const [gameOver, setGameOver] = useState(false);
+    const [dropTime, setDropTime] = useState(null)
+    const [gameOver, setGameOver] = useState(false)
   
-    const [player, updatePlayerPos, resetPlayer] = usePlayer();
-    const [stage, setStage] = useStage(player);
-  
-    console.log('re-render');
+    const [player, updatePlayerPos, resetPlayer] = usePlayer()
+    const [stage, setStage] = useStage(player)
+
+    console.log('re-render')
   
     const movePlayer = dir => {
-      updatePlayerPos({ x: dir, y: 0 });
+      updatePlayerPos({ x: dir, y: 0 })
     }
   
     const startGame = () => {
       console.log("test")
       // Reset everything
-      setStage(createStage());
-      resetPlayer();
+      setStage(createStage())
+      resetPlayer()
     }
   
     const drop = () => {
@@ -43,17 +43,17 @@ const Tetris = () => {
     }
   
     const dropPlayer = () => {
-      drop();
+      drop()
     }
   
     const move = ({ keyCode }) => {
       if (!gameOver) {
         if (keyCode === 37) { // moves left
-          movePlayer(-1);
+          movePlayer(-1)
         } else if (keyCode === 39) { // moves right
-          movePlayer(1);
+          movePlayer(1)
         } else if (keyCode === 40) { // moves down
-          dropPlayer();
+          dropPlayer()
         }
       }
     }
@@ -76,8 +76,7 @@ const Tetris = () => {
           </aside>
         </StyledTetris>
       </StyledTetrisWrapper>
-    );
-  };
+    )
+  }
   
-  export default Tetris;
-  
+  export default Tetris

@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 
 // Functions
 import { TETROMINOS, randomTetromino } from '../tetrominos'
-import { STAGE_WIDTH } from '../gameHelpers'
+import { STAGE_WIDTH, checkCollision } from '../gameHelpers'
 import Stage from '../components/Stage'
 
 export const usePlayer = () => {
@@ -26,6 +26,21 @@ export const usePlayer = () => {
         const clonedPlayer = JSON.parse(JSON.stringify(player))
         // gets a complete copy of the player
         clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, dir)
+
+        // prevent tetromino from rotating off stage
+        const pos = clonedPlayer.pos.x
+        let offset = 1
+        // the tetromino will check right and left if it is colliding with each movement
+        while(checkCollision(clonedPlayer, stage, { x:0, y:0 })){
+            clonedPlayer.pos.x +=  offset
+            offset = -(offset + (offset > 0 ? 1 : -1))
+            if (offset > clonedPlayer.tetromino[0].length) {
+                //reverses the direction if there's no space for it
+                rotate(clonedPlayer.tetromino, -dir)
+                // it'll keep the same direction
+                clonedPlayer.pos.x = pos
+            }
+        }
 
         setPlayer(clonedPlayer)
     }

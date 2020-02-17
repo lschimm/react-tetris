@@ -47,7 +47,7 @@ export const usePlayer = () => {
         })
     }, [])
     
-    return [player, updatePlayerPos, resetPlayer]
+    return [player, updatePlayerPos, resetPlayer, playerRotate]
 }
 // name custom hooks === 'use'_____ so react will know it's a custom hook
 

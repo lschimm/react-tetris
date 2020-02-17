@@ -23,7 +23,11 @@ export const usePlayer = () => {
     }
 
     const playerRotate = (stage, dir) => {
-        
+        const clonedPlayer = JSON.parse(JSON.stringify(player))
+        // gets a complete copy of the player
+        clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, dir)
+
+        setPlayer(clonedPlayer)
     }
 
     

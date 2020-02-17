@@ -13,7 +13,13 @@ export const usePlayer = () => {
     })
 
     const rotate = (matrix, dir) => {  
-
+        // Make the rows columns 
+        const rotatedTetro = matrix.map((_, index) => 
+        matrix.map(col => col[index])
+        )
+        // Reverse each row to get the rotated tetromino (matrix)
+        if (dir > 0) return rotatedTetro.map(row => row.reverse())
+        return rotatedTetro.rev()
     }
 
     const playerRotate = (stage, dir) => {

@@ -3,6 +3,7 @@ import { useState, useCallback } from 'react'
 // Functions
 import { TETROMINOS, randomTetromino } from '../tetrominos'
 import { STAGE_WIDTH } from '../gameHelpers'
+import Stage from '../components/Stage'
 
 export const usePlayer = () => {
     const [player, setPlayer] = useState({
@@ -10,6 +11,14 @@ export const usePlayer = () => {
         tetromino: TETROMINOS[0].shape,
         collided: false,
     })
+
+    const rotate = (matrix, dir) => {  
+
+    }
+
+    const playerRotate = (stage, dir) => {
+        
+    }
 
     
     const updatePlayerPos = ({ x, y, collided }) => {
